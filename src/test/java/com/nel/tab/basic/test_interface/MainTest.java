@@ -7,12 +7,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 
-@RunWith(SpringRunner.class) // Ö¸Ã÷Æô¶¯Æ÷Ìá¹©Àà
-@SpringBootTest // ×Ô¶¯»¯ÅäÖÃ²âÊÔ»·¾³
+@RunWith(SpringRunner.class) // Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½á¹©ï¿½ï¿½
+@SpringBootTest // ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½Ô»ï¿½ï¿½ï¿½
 public class MainTest {
 	
 	@Autowired
-	OriginalInterface of;
+	InterfaceImpl1 of;
 	
 	public static void ads(String[] args) {
 		
