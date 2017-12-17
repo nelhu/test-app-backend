@@ -1,2 +1,3 @@
-insert into person values(1, 'tom');
-insert into person values(2, 'mike');
+insert into person(id, name, age, money) values
+(1, 'tom', '21', 200),
+(2, 'mike', '23', 400);
