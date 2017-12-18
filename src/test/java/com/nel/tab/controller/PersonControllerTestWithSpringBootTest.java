@@ -17,11 +17,12 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import com.google.gson.Gson;
 import com.nel.tab.entity.Person;
 
 @RunWith(SpringRunner.class)
-@AutoConfigureMockMvc // 启用@MockMvc： 不需要启动http服务器就可以提供对springMVC控制器自动化测试的强大支持
-@SpringBootTest // 自动启动模拟的web环境,实现controller, service, jpa层的测试 
+@AutoConfigureMockMvc // 鍚敤@MockMvc锛� 涓嶉渶瑕佸惎鍔╤ttp鏈嶅姟鍣ㄥ氨鍙互鎻愪緵瀵箂pringMVC鎺у埗鍣ㄨ嚜鍔ㄥ寲娴嬭瘯鐨勫己澶ф敮鎸�
+@SpringBootTest // 鑷姩鍚姩妯℃嫙鐨剋eb鐜,瀹炵幇controller, service, jpa灞傜殑娴嬭瘯 
 public class PersonControllerTestWithSpringBootTest {
 
 	@Autowired
@@ -45,9 +46,10 @@ public class PersonControllerTestWithSpringBootTest {
 	
 	@Test
 	public void testMsgJpa() throws Exception {
-		Person p = new Person("asd", "asd", 100);
-//		JSON
-		mvc.perform(post("/msgJpa").content("{name: 'adsd', age: 'asd', money: ''}").contentType(MediaType.APPLICATION_JSON)).
+		Person p = new Person("", "asd", 100);
+		Gson gs = new Gson();
+		String json = gs.toJson(p);
+		mvc.perform(post("/msgJpa").content(json).contentType(MediaType.APPLICATION_JSON)).
 		andDo(print()).andExpect(status().isOk());
 		
 	}

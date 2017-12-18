@@ -2,6 +2,7 @@ package com.nel.tab.basic.test_basic;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.google.gson.Gson;
 import com.nel.tab.entity.Person;
 import com.nel.tab.service.PersonService;
 
@@ -34,11 +35,17 @@ public class BasicTest {
 	
 	public static void main(String[] args) {
 		
-		BasicTest bt = new BasicTest("mike");
-		String res = bt.say();
-		String res2 = bt.login();
-		String res3 = bt.jpa();
-		System.out.println(res3);
+//		BasicTest bt = new BasicTest("mike");
+//		String res = bt.say();
+//		String res2 = bt.login();
+//		String res3 = bt.jpa();
+//		System.out.println(res3);
+		
+		Gson gs = new Gson();
+		Person p = new Person();
+		p.setName("asd");
+		p.setAge("23");
+		System.out.println(gs.toJson(p));
 	}
 	
 }
