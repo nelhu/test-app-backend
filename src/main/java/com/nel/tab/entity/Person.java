@@ -68,5 +68,9 @@ public class Person {
 		this.age = age;
 		this.money = money;
 	}
+
+	public Person() {
+		super();
+	}
 	
 }
