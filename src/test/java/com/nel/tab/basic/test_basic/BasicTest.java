@@ -33,19 +33,19 @@ public class BasicTest {
 	     return p.getId() + " " + p.getName();
 	}
 	
-	public static void main(String[] args) {
-		
-//		BasicTest bt = new BasicTest("mike");
-//		String res = bt.say();
-//		String res2 = bt.login();
-//		String res3 = bt.jpa();
-//		System.out.println(res3);
-		
-		Gson gs = new Gson();
-		Person p = new Person();
-		p.setName("asd");
-		p.setAge("23");
-		System.out.println(gs.toJson(p));
-	}
+//	public static void main(String[] args) {
+//		
+////		BasicTest bt = new BasicTest("mike");
+////		String res = bt.say();
+////		String res2 = bt.login();
+////		String res3 = bt.jpa();
+////		System.out.println(res3);
+//		
+//		Gson gs = new Gson();
+//		Person p = new Person();
+//		p.setName("asd");
+//		p.setAge("23");
+//		System.out.println(gs.toJson(p));
+//	}
 	
 }

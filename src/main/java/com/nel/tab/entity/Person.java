@@ -13,13 +13,13 @@ public class Person {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
     
-	@NotNull(message = "name涓嶈兘涓虹┖锛�")
+	@NotNull(message = "名称不能为空")
 	private String name;
 	
-	@NotNull(message = "age涓嶈兘涓虹┖锛�")
+	@NotNull(message = "年龄不能为空")
 	private String age;
 	
-	@NotNull(message = "money涓嶈兘涓虹┖锛�")
+	@NotNull(message = "金额不能为空")
 	private Integer money;
 	
 	public String getAge() {
@@ -71,10 +71,6 @@ public class Person {
 		this.name = name;
 		this.age = age;
 		this.money = money;
-	}
-
-	public Person() {
-		super();
 	}
 	
 }
