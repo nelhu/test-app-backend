@@ -20,7 +20,7 @@ public class BaseEntityObject {
 	
 	@Convert(converter = BooleanIntegerConverter.class)
 	@Column(nullable = false)
-	@ColumnDefault("0")
+	@ColumnDefault("0") // 0: 未删除  1： 已删除
 	private Boolean deleted;
 
 	public Long getId() {
@@ -38,6 +38,7 @@ public class BaseEntityObject {
 	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
-	
+
+	public BaseEntityObject() {}
 	
 }
