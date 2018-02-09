@@ -16,11 +16,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.nel.tab.data.PersonRepository;
 import com.nel.tab.entity.Person;
+import com.nel.tab.exception.CustomeException;
+import com.nel.tab.exception.CustomeException1;
+import com.nel.tab.exception.ErrorDTO;
 import com.nel.tab.service.PersonService;
 import com.nel.tab.util.ErrorUtil;
 
+import ch.qos.logback.classic.Logger;
+
 @RestController
-public class RootController {
+public class RootController extends BaseController{
 	
 	@Autowired
 	PersonService personService;
@@ -38,7 +43,7 @@ public class RootController {
 	}
 
 	@GetMapping(value="/jpa")
-	public Person jpa() {
+	public Person jpa() throws Exception {
 		
 		String name = "mmm";
 		Person p = personService.findByName(name);
@@ -47,7 +52,7 @@ public class RootController {
 	}
 	
 	@GetMapping(value="/newJpa")
-	public ResponseEntity<Object> newJpa(@RequestParam String name) {
+	public ResponseEntity<Object> newJpa(@RequestParam String name) throws Exception {
 		
 		Person p = personService.findByName(name);
 		
@@ -69,7 +74,60 @@ public class RootController {
 	    return new ResponseEntity("ok", HttpStatus.OK);
 	}
 	
+	 @GetMapping("/directThrow")
+	 public String directThrow(@RequestParam String name) {
+		 
+		 String result = null;
+		 try {
+			 result = name.substring(2, 3);
+		 } catch(Exception e) {
+			 
+			 System.out.println("************ msg is *******");
+			 System.out.println(e.getMessage());
+			 
+		 }
+		 
+		 return result;
+	 }
+	 
 	
+	 @GetMapping("/handlerExceptionResolver")
+	 public Object ErrorDTO(@RequestParam String name) throws Exception {
+		 
+		 
+		 Person p = personService.findByName(name);
+		 
+//		 if (p == null) {
+//			 throw new ErrorDTO("not found");
+//		 }
+		 System.out.println("after");
+		 return p;
+	 }
+	 
+	 @GetMapping("/exceptionHandler")
+	 public Person exceptionHandler(@RequestParam String name) throws Exception {
+		 
+		 Person p = personService.findByName(name);
+		 
+		 System.out.println("after");
+		 return p;
+	 }
+	 
+	 @GetMapping("/twoException")
+	 public void twoException(
+			 @RequestParam String name,
+			 @RequestParam String age) throws Exception {
+		 
+		 if (name.equals("caseA")) {
+			 throw new CustomeException("caseA");
+		 }
+		 
+		 if (age.equals("caseB")) {
+			 throw new CustomeException1("caseB");
+		 }
+		 
+	 }
+	 
 	 
 
 }

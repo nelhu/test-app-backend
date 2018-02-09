@@ -26,7 +26,7 @@ public class BasicTest {
 	     return "login";
 	}
 	
-	public String jpa() {
+	public String jpa() throws Exception {
 		
 		Person p = personService.findByName("tom");
 		
