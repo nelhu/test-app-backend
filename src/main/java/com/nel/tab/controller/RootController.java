@@ -75,17 +75,10 @@ public class RootController extends BaseController{
 	}
 	
 	 @GetMapping("/directThrow")
-	 public String directThrow(@RequestParam String name) {
+	 public String directThrow(@RequestParam String name) throws CustomeException{
 		 
 		 String result = null;
-		 try {
-			 result = name.substring(2, 3);
-		 } catch(Exception e) {
-			 
-			 System.out.println("************ msg is *******");
-			 System.out.println(e.getMessage());
-			 
-		 }
+		 result = name.substring(2, 3);
 		 
 		 return result;
 	 }
