@@ -10,9 +10,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.nel.tab.exception.ErrorDTO;
 
@@ -26,6 +30,12 @@ public class BaseController {
 	@Autowired
 	HttpServletResponse response;
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public ModelAndView home(ModelAndView mv) {
+		System.out.println("root");
+		mv.setViewName("index");
+		return mv;
+	}
 	
 //	@ExceptionHandler(value = Exception.class)
 //	@ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
@@ -49,5 +59,6 @@ public class BaseController {
 //		exception.put("message", msg);
 //		return exception;
 //	}
+	
 	
 }

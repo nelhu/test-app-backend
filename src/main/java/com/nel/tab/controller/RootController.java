@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.nel.tab.data.PersonRepository;
@@ -30,13 +31,6 @@ public class RootController extends BaseController{
 	@Autowired
 	PersonService personService;
 
-	@RequestMapping("/")
-	public String root(ModelAndView mv) {
-		System.out.println("root");
-		mv.addObject("hi", "nihao");
-		return "Good morning";
-	}
-	
 	@GetMapping(value="/login")
 	public String login() {
 	     return "login";
@@ -120,6 +114,17 @@ public class RootController extends BaseController{
 		 }
 		 
 	 }
+	 
+	 @GetMapping("/files")
+	 public void file(
+			 @RequestParam String title,
+			 @RequestParam MultipartFile file) throws Exception {
+		 
+		 System.out.println("title");
+		 
+	 }
+	 
+	 
 	 
 	 
 
