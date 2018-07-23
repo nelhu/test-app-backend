@@ -115,17 +115,5 @@ public class RootController extends BaseController{
 		 
 	 }
 	 
-	 @GetMapping("/files")
-	 public void file(
-			 @RequestParam String title,
-			 @RequestParam MultipartFile file) throws Exception {
-		 
-		 System.out.println("title");
-		 
-	 }
-	 
-	 
-	 
-	 
 
 }

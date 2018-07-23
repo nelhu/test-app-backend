@@ -16,10 +16,10 @@
 		
 		<div class="jumbotron">
 			<h2>file</h2>
-			<form novalidate action="/files">
+			<form novalidate action="/files" method="post">
 				<input name="title" ng-model="title"/>
 				<input type="file" name="file"/>
-				<input type="submit" value="submit"/>
+				<input type="button" value="submit" ng-click="submit()"/>
 			</form>
 		</div>
 		
@@ -30,11 +30,28 @@
 	<script type="text/javascript">
 		
 		var app = angular.module('AngularApp', []);
-		app.controller('AngularCtrl', function($scope, $http, $timeout) {
+		app.controller('AngularCtrl', function($scope, $http, $timeout, $document) {
 			
 			$scope.one = "mike";
 			$scope.email = "test"
 			
+			$scope.submit = function() {
+				 var data = new FormData();
+				 data.append('title', $scope.title);
+				 data.append('file', $document.find('input[type=file]')[0].files[0]);
+				
+				 $http({
+					 method: 'POST',
+					 url: '/files',
+					 data: data,
+					 headers: {'Content-Type': undefined},
+		             transformRequest: angular.identity
+				 }).success(function(data) {
+					 console.info(data);
+				 }).error(function(data) {
+					 console.error(data);
+				 });
+			}
 			
 		});
 	</script>
